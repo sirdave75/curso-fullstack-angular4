@@ -12,6 +12,7 @@ const appRoutes: Routes = [
     {path: '', component : DefaultComponent},
     {path: 'index', component : DefaultComponent},
     {path: 'login', component : LoginComponent},
+    {path: 'login/:id', component : LoginComponent},
     {path: 'register', component : RegisterComponent},
     {path: '**', component : ErrorComponent}
 ];
