@@ -21,6 +21,11 @@
                     <li *ngIf="identity"><a [routerLink]="['/index']">Crear vídeo</a></li>
                 </ul>
                 <ul *ngIf="identity" class="nav navbar-nav navbar-right" id="credentials-top">
+                    <li >
+                        <a [routerLink]="['/index']" class="user-image">
+                            <img src="http://localhost/curso-fullstack/symfony/web/uploads/users/{{identity.image}}" >
+                        </a>
+                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             {{identity.name}} {{identity.surname}} <span class="caret"></span>
@@ -32,7 +37,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a [routerLink]="['/index']">
+                                <a [routerLink]="['/user-edit']">
                                     <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Ajustes
                                 </a>
                             </li>
