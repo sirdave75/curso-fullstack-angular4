@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DefaultComponent } from './components/default/default.component';
 import { ErrorComponent } from './components/error/error.component';
 import {UserEditComponent} from './components/register/user-edit.component';
+import {VideoNewComponent} from './components/videos/video-new.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {UserEditComponent} from './components/register/user-edit.component';
     LoginComponent,
     DefaultComponent,
     ErrorComponent,
-    UserEditComponent
+    UserEditComponent,
+    VideoNewComponent
 
   ],
   imports: [

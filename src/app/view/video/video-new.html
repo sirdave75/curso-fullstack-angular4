@@ -1,0 +1,79 @@
+<div class="col-md-12">
+    <hr>
+    <h1>{{titulo}}</h1>
+    <hr>
+    <div class="alert alert-success" *ngIf="status == 'success'">
+        Has modificado tus datos correctamente
+        Datos básicos de tu nuevo vídeo <strong>{{video.title}}</strong> guardados,
+        ahora añade una imagen y un  vídeo.
+    </div>
+    <div class="alert alert-danger" *ngIf="status == 'error'">
+        Datos básicos no se han podido guardar, inténtalo más tarde.
+    </div>
+    <form #newVideoForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-4" *ngIf="status != 'success'">
+        <p>
+            Paso 1 de 3. Añada la información básica de un vídeo.
+        </p>
+        <p>
+            <label>Título:</label>
+            <span *ngIf="!title.valid && title.touched" class="label label-danger"> El título es oblligatorio</span>
+            <input type="text" class="form-control" #title="ngModel"  name="title" [(ngModel)]="video.title" required >
+        </p>
+        <p>
+            <label>Descripción:</label>
+            <span *ngIf="!description.valid && description.touched" class="label label-danger"> La descripción es oblligatorio</span>
+            <textarea class="form-control" #description="ngModel"  name="decripction" [(ngModel)]="video.description" required ></textarea>
+        </p>
+        <p>
+            <label>Estado:</label>
+            <span *ngIf="!description.valid && description.touched" class="label label-danger"> La descripción es oblligatorio</span>
+            <select class="form-control" (change)="callVideoStatus(videostatus.value)" #videostatus>
+                <option value="public" [attr.selected]="(video.status == 'public' ) ? 'selected' : null">Público</option>
+                <option value="private" [attr.selected]="(video.status == 'private' ) ? 'selected' : null">Privado</option>
+            </select>
+        </p>
+        <input type="submit" value="{{titulo}}" class="btn btn-success center-block">
+    </form>
+
+    <div class="col-md-4" *ngIf="status == 'success' && uploadedImage == false">
+        <h4>Imagen del vídeo</h4>
+        <p>Paso 2 de 3. Sube la imagen del vídeo</p>
+
+            <input type="file" placeholder="Subir imagen..." (change)="fileChangeEventImage($event)">
+            <div class="progress">
+                <div id="upload-progress-bar" class="progress-bar progress-bar-success"
+                     role="progressbar"
+                     aria-valuenow="0"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="width: 0%;"
+                ></div>
+            </div>
+
+        <p id="status"></p>
+        <button class="btn btn-default" (click)="nextUploadVideo()">
+            Continuar y subir el vídeo
+        </button>
+    </div>
+    <div class="col-md-4" *ngIf="status == 'success' && uploadedImage == true">
+        <h4>Imagen del vídeo</h4>
+        <p>Paso 3 de 3. Sube tu vídeo</p>
+
+        <input type="file" placeholder="Subir vídeo..." (change)="fileChangeEventVideo($event)">
+        <div class="progress">
+            <div id="upload-progress-bar" class="progress-bar progress-bar-success"
+                 role="progressbar"
+                 aria-valuenow="0"
+                 aria-valuemin="0"
+                 aria-valuemax="100"
+                 style="width: 0%;"
+            ></div>
+        </div>
+
+        <p id="status"></p>
+        <button class="btn btn-default" (click)="redirectToVideo()">
+            Continuar y ver como ha quedado!!
+        </button>
+    </div>
+
+</div>
