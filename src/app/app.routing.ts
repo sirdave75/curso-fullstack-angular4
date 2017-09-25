@@ -9,6 +9,7 @@ import {VideoNewComponent } from './components/videos/video-new.component';
 
 import {DefaultComponent } from './components/default/default.component';
 import { ErrorComponent } from './components/error/error.component';
+import {VideoDetailComponent} from "./components/videos/video-detail.component";
 
 
 const appRoutes: Routes = [
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     {path: 'register', component : RegisterComponent},
     {path: 'user-edit', component : UserEditComponent},
     {path: 'create-video', component : VideoNewComponent},
+    {path: 'video/:id', component : VideoDetailComponent},
     {path: '**', component : ErrorComponent}
 ];
 

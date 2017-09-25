@@ -15,6 +15,8 @@ import { DefaultComponent } from './components/default/default.component';
 import { ErrorComponent } from './components/error/error.component';
 import {UserEditComponent} from './components/register/user-edit.component';
 import {VideoNewComponent} from './components/videos/video-new.component';
+import {VideoDetailComponent} from './components/videos/video-detail.component';
+import {GenerateDatePipe} from  './pipes/generate.date.pipe';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,9 @@ import {VideoNewComponent} from './components/videos/video-new.component';
     DefaultComponent,
     ErrorComponent,
     UserEditComponent,
-    VideoNewComponent
-
+    VideoNewComponent,
+    VideoDetailComponent,
+    GenerateDatePipe
   ],
   imports: [
     BrowserModule,
