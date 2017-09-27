@@ -39,27 +39,26 @@ export  class VideoDetailComponent implements OnInit {
                         if(this.status != 'success'){
                             this._router.navigate(['/index']);
                         }
-                        this.loading = 'hide';
+                        else{
+                            this._videoService.getLastsVideos().subscribe(
+                                response => {
+                                    this.lastsVideos = response.data;
+                                    this.statusLastsVideos = response.status;
+                                    if(this.statusLastsVideos != 'success'){
+                                        this._router.navigate(['/index']);
+                                    }
+                                    this.loading = 'hide';
 
-                    },
-                    error => {
-                        this.errorMessage = <any> error;
-                        if (this.errorMessage != null){
-                            console.log(this.errorMessage);
-                            alert("Error en la petición");
+                                },
+                                error => {
+                                    this.errorMessage = <any> error;
+                                    if (this.errorMessage != null){
+                                        console.log(this.errorMessage);
+                                        alert("Error en la petición");
+                                    }
+                                }
+                            );
                         }
-                    }
-                );
-
-                this._videoService.getLastsVideos().subscribe(
-                    response => {
-                        this.lastsVideos = response.data;
-                        this.statusLastsVideos = response.status;
-                        if(this.statusLastsVideos != 'success'){
-                            this._router.navigate(['/index']);
-                        }
-                        this.loading = 'hide';
-
                     },
                     error => {
                         this.errorMessage = <any> error;
